@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.add_item">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:id="@+id/layout01">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/arrow"
+            android:rotation="-90"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_item"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_marginStart="50dp"
+            android:textColor="@color/black"/>
+
+
+
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout01">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mainrelative">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/itemnameheading"
+                android:text="@string/item_name"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/required"
+                android:layout_marginTop="8dp"
+                android:layout_toEndOf="@id/itemnameheading"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#FF0000"
+                android:layout_marginStart="5dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/itemnameinput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/itemnameheading"
+                android:layout_marginTop="8dp"
+                android:layout_margin="10dp"
+                android:hint="@string/ex_pen"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/item_type"
+                android:id="@+id/itemtypeheading"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_marginStart="10dp"
+                android:layout_below="@id/itemnameinput"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/required"
+                android:layout_marginTop="0dp"
+                android:layout_below="@id/itemnameinput"
+                android:layout_toEndOf="@id/itemtypeheading"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#FF0000"
+                android:layout_marginStart="5dp"/>
+
+            <Button
+                style="?attr/materialButtonOutlinedStyle"
+                android:id="@+id/produtbtn"
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/itemtypeheading"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/product"
+                android:textStyle="bold"/>
+            <Button
+                style="?attr/materialButtonOutlinedStyle"
+                android:id="@+id/servicebtn"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/itemtypeheading"
+                android:layout_toEndOf="@id/produtbtn"
+                android:layout_height="wrap_content"
+                android:text="@string/service"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:id="@+id/divider01"
+                android:layout_below="@id/produtbtn"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pricing"
+                android:id="@+id/pricingheading"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_below="@id/divider01"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/required"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/divider01"
+                android:layout_toEndOf="@id/pricingheading"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#FF0000"
+                android:layout_marginStart="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/unitheading"
+                android:text="Unit"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:layout_below="@id/pricingheading"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/unitinput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/unitheading"
+                android:layout_marginTop="8dp"
+                android:layout_margin="8dp"
+                android:hint="@string/ex_nos_pkt">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/salespriceheading"
+                android:text="@string/sales_price"
+                android:layout_below="@id/unitinput"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout03"
+                android:orientation="horizontal"
+                android:layout_below="@+id/salespriceheading">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/salespriceinput"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                app:startIconDrawable="@drawable/currency"
+                app:startIconContentDescription="@string/content_description_start_icon"
+                android:layout_marginTop="8dp"
+                android:layout_margin="8dp"
+                android:text="@string/sales_price">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:paddingStart="50dp"
+                    android:textStyle="bold"
+                    android:layout_height="wrap_content"
+                    tools:ignore="RtlSymmetry" />
+            </com.google.android.material.textfield.TextInputLayout>
+                <Spinner
+                    android:id="@+id/salesPriceSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/purchase_price"
+                android:id="@+id/purchaseheading"
+                android:layout_below="@id/layout03"
+                android:textSize="18sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout04"
+                android:orientation="horizontal"
+                android:layout_below="@+id/purchaseheading">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/purchasepriceinput"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    app:startIconDrawable="@drawable/currency"
+                    app:startIconContentDescription="@string/content_description_start_icon"
+                    android:layout_marginTop="8dp"
+                    android:layout_margin="8dp"
+                    android:text="@string/sales_price">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:paddingStart="50dp"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"
+                        tools:ignore="RtlSymmetry" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <Spinner
+                    android:id="@+id/purchasePriceSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/hsn_code"
+                android:id="@+id/hsnheading"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_below="@+id/layout04"
+                android:textSize="18sp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layout04"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="150dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/gst"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/hsnheading"
+                android:id="@+id/linear05">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/hsninput"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
+                    android:layout_margin="8dp"
+                    android:text="@string/sales_price">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:paddingStart="50dp"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"
+                        tools:ignore="RtlSymmetry" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/gstinputsection"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_margin="8dp"
+                    android:layout_weight="1"
+                    android:text="@string/sales_price">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:paddingStart="50dp"
+                        android:id="@+id/gstinput"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"
+                        tools:ignore="RtlSymmetry" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

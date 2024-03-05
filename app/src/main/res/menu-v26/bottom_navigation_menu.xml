@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home_icon"
+        android:icon="@drawable/home"
+        android:title="@string/dashboard" />
+    <item
+        android:id="@+id/parties_icon"
+        android:icon="@drawable/parties"
+        android:iconTint="@color/black"
+        android:title="@string/parties"
+        />
+    <item
+        android:id="@+id/item_icon"
+        android:iconTint="@color/white"
+        android:icon="@drawable/items"
+        android:title="@string/item"
+        />
+    <item
+        android:id="@+id/icon_more"
+        android:icon="@drawable/more"
+        android:title="@string/more"
+        />
+</menu>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6EAF8"
+    tools:context=".fragments.Parties">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/parties_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/createpartyfab"
+        app:icon="@drawable/add"
+        android:text="@string/create_party"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="bottom|center_horizontal" />
+</FrameLayout>
