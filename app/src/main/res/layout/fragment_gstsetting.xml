@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.gstsetting">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center_vertical"
+        android:background="#C8A8DC"
+        android:id="@+id/layoutheading">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/arrow"
+            android:rotation="-90"
+            android:padding="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:textStyle="bold"
+            android:id="@+id/createpartymainheading"
+            android:text="@string/business_and_gst"
+            android:textSize="25sp"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutheading">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Business Name"
+                    android:id="@+id/businessheading"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/businessinput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/businessheading"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="0dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/linear100"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+                    android:layout_below="@id/businessinput">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:id="@+id/gstsettingcard"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:padding="10dp"
+                            android:src="@drawable/phone_call"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/business_phone_number"
+                            android:textSize="15sp"
+                            android:textColor="@color/black"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="50dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="9664635841"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="50dp"
+                            android:textSize="12sp"/>
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/right_arrow_withoutline"
+                            android:layout_gravity="end"
+                            android:padding="13dp"
+                            app:tint="#DF74F1" />
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:id="@+id/emailsettingcard"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:padding="10dp"
+                            android:src="@drawable/email"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Business Email"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:layout_marginStart="55dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginRight="50dp"/>
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/right_arrow_withoutline"
+                            android:layout_gravity="end"
+                            android:padding="13dp"
+                            app:tint="#DF74F1" />
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+                android:layout_below="@id/linear100"
+                android:layout_marginTop="30dp">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cardgst">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:padding="10dp"
+                        android:src="@drawable/gst"
+                        android:rotation="-90"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gst_number"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="55dp"
+                        android:layout_marginTop="15dp"/>
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/right_arrow_withoutline"
+                        android:layout_gravity="end"
+                        android:padding="13dp"
+                        app:tint="#DF74F1" />
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cardpan"
+                    android:layout_below="@id/cardgst">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:padding="10dp"
+                        android:src="@drawable/pan"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/pan_number"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="55dp"
+                        android:layout_marginTop="15dp"/>
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/right_arrow_withoutline"
+                        android:layout_gravity="end"
+                        android:padding="13dp"
+                        app:tint="#DF74F1" />
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/cardaddress"
+                    android:layout_below="@+id/cardpan">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:padding="13dp"
+                        android:src="@drawable/address" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Business Address"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:layout_marginStart="55dp"
+                        android:layout_marginTop="15dp"/>
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/right_arrow_withoutline"
+                        android:layout_gravity="end"
+                        android:padding="13dp"
+                        app:tint="#DF74F1" />
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    </RelativeLayout>
+    
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

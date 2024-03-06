@@ -84,4 +84,12 @@
     <string name="sales_price_menu_with_tax">With Tax</string>
     <string name="hsn_code">HSN Code</string>
     <string name="gst">GST</string>
+    <string name="business_and_gst">Business And GST</string>
+    <string name="business_phone_number">Business Phone Number</string>
+    <string name="gst_number">GST Number</string>
+    <string name="pan_number">PAN Number</string>
+    <string name="use_this_to_change_the_number_on_invoice">Use this to change the number on Invoice</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="business_email">Business Email</string>
+    <string name="this_email_will_be_shown_on_invoices">This email will be shown on invoices</string>
 </resources>

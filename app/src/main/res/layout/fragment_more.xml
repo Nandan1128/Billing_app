@@ -57,7 +57,10 @@
         android:id="@+id/settingbusinessandgst"
         android:background="@color/white"
         android:layout_below="@id/settingheading">
-
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:id="@+id/businessandgstcard"
+        android:layout_height="wrap_content">
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -70,9 +73,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/businesslogo"
-            android:text="Business and GST"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/business_and_gst"
             android:layout_marginTop="15dp"
+            android:layout_marginEnd="60dp"
             android:textSize="16sp"
             android:textStyle="bold"/>
 
@@ -80,8 +84,9 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/right_arrow_withoutline"
-            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
             android:padding="15dp"/>
+    </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
 

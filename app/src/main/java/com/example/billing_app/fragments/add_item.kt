@@ -10,8 +10,7 @@ import android.widget.Spinner
 import com.example.billing_app.R
 import com.example.billing_app.adaptors.SalesPriceSpinnerAdapter
 
-class Add_item : Fragment() {
-
+class add_item : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
