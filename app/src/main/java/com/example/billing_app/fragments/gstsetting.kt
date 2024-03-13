@@ -18,7 +18,6 @@ class gstsetting : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_gstsetting, container, false)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,7 +44,7 @@ class gstsetting : Fragment() {
 
     private fun showBottomSheetDialog() {
         // Inflate the layout for the bottom sheet
-        val bottomSheetView = layoutInflater.inflate(R.layout.fragment_emailsheet, null)
+        val bottomSheetView = layoutInflater.inflate(R.layout.fragment_phonenumbersheet, null)
 
         // Create bottom sheet dialog
         val bottomSheetDialog = BottomSheetDialog(requireContext())

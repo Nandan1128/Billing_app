@@ -92,4 +92,7 @@
     <string name="phone_number">Phone Number</string>
     <string name="business_email">Business Email</string>
     <string name="this_email_will_be_shown_on_invoices">This email will be shown on invoices</string>
+    <string name="customer">Customer</string>
+    <string name="supplier">Supplier</string>
+    <string name="business_name">Business Name</string>
 </resources>
