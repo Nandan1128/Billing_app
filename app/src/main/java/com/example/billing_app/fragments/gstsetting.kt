@@ -51,5 +51,14 @@ class gstsetting : Fragment() {
         bottomSheetDialog.setContentView(bottomSheetView)
         bottomSheetDialog.show()
     }
+    private fun showBottomSheetDialog2() {
+        // Inflate the layout for the bottom sheet
+        val bottomSheetView = layoutInflater.inflate(R.layout.fragment_gstnumbersheet, null)
+
+        // Create bottom sheet dialog
+        val bottomSheetDialog = BottomSheetDialog(requireContext())
+        bottomSheetDialog.setContentView(bottomSheetView)
+        bottomSheetDialog.show()
+    }
 
 }
