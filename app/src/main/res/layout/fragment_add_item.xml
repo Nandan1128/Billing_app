@@ -16,6 +16,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
+            android:contentDescription="@string/back_arrow"
             android:src="@drawable/arrow"
             android:rotation="-90"/>
 
@@ -158,7 +159,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/unitheading"
-                android:text="Unit"
+                android:text="@string/unit"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:layout_below="@id/pricingheading"
@@ -295,6 +296,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/hsnheading"
+                android:baselineAligned="false"
                 android:id="@+id/linear05">
 
                 <com.google.android.material.textfield.TextInputLayout

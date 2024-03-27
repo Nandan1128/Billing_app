@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "48050277852",
+    "firebase_url": "https://billing-app-4905f-default-rtdb.firebaseio.com",
+    "project_id": "billing-app-4905f",
+    "storage_bucket": "billing-app-4905f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48050277852:android:eee5f9c3d3271c93465319",
+        "android_client_info": {
+          "package_name": "com.example.billing_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKpBe_nCKL8vdE0NpSSH0HrhduDhlcPXg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

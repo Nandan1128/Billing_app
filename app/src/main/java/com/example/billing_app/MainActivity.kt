@@ -9,6 +9,8 @@ import com.example.billing_app.fragments.More
 
 import com.example.billing_app.fragments.items
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity : AppCompatActivity() {
     private lateinit var bottomNavigation: BottomNavigationView

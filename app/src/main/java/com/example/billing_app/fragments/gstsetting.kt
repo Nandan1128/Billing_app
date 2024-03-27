@@ -30,7 +30,26 @@ class gstsetting : Fragment() {
         view.findViewById<View>(R.id.emailsettingcard).setOnClickListener {
             showBottomSheetDialog1()
         }
+        view.findViewById<View>(R.id.cardgst).setOnClickListener{
+            showBottomSheetDialog2()
+        }
+        view.findViewById<View>(R.id.cardpan).setOnClickListener{
+            showBottomSheetDialog3()
+        }
+        view.findViewById<View>(R.id.cardaddress).setOnClickListener{
+            showBottomSheetDialog4()
+        }
     }
+    private fun showBottomSheetDialog() {
+        // Inflate the layout for the bottom sheet
+        val bottomSheetView = layoutInflater.inflate(R.layout.fragment_phonenumbersheet, null)
+
+        // Create bottom sheet dialog
+        val bottomSheetDialog = BottomSheetDialog(requireContext())
+        bottomSheetDialog.setContentView(bottomSheetView)
+        bottomSheetDialog.show()
+    }
+
 
     private fun showBottomSheetDialog1() {
         // Inflate the layout for the bottom sheet
@@ -42,18 +61,30 @@ class gstsetting : Fragment() {
         bottomSheetDialog.show()
     }
 
-    private fun showBottomSheetDialog() {
+
+    private fun showBottomSheetDialog2() {
         // Inflate the layout for the bottom sheet
-        val bottomSheetView = layoutInflater.inflate(R.layout.fragment_phonenumbersheet, null)
+        val bottomSheetView = layoutInflater.inflate(R.layout.fragment_gstnumbersheet, null)
 
         // Create bottom sheet dialog
         val bottomSheetDialog = BottomSheetDialog(requireContext())
         bottomSheetDialog.setContentView(bottomSheetView)
         bottomSheetDialog.show()
     }
-    private fun showBottomSheetDialog2() {
+
+    private fun showBottomSheetDialog3() {
         // Inflate the layout for the bottom sheet
-        val bottomSheetView = layoutInflater.inflate(R.layout.fragment_gstnumbersheet, null)
+        val bottomSheetView = layoutInflater.inflate(R.layout.fragment_pannumbersheet, null)
+
+        // Create bottom sheet dialog
+        val bottomSheetDialog = BottomSheetDialog(requireContext())
+        bottomSheetDialog.setContentView(bottomSheetView)
+        bottomSheetDialog.show()
+    }
+
+    private fun showBottomSheetDialog4() {
+        // Inflate the layout for the bottom sheet
+        val bottomSheetView = layoutInflater.inflate(R.layout.fragment_addresssheet, null)
 
         // Create bottom sheet dialog
         val bottomSheetDialog = BottomSheetDialog(requireContext())

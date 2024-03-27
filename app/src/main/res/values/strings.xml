@@ -96,4 +96,7 @@
     <string name="supplier">Supplier</string>
     <string name="business_name">Business Name</string>
     <string name="business_gst_number">Business GST Number</string>
+    <string name="back_arrow">Back arrow</string>
+    <string name="unit">Unit</string>
+    <string name="business_address">Business Address</string>
 </resources>
