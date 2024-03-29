@@ -1,16 +1,21 @@
 import android.os.Bundle
+import android.util.Log
 import android.view.*
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.cardview.widget.CardView
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.fragment.app.Fragment
 import com.example.billing_app.R
+import com.example.billing_app.dataclass.partyModel
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+
 
 class create_party : Fragment() {
 
@@ -25,61 +30,67 @@ class create_party : Fragment() {
     private lateinit var etpincode : EditText
     private lateinit var savebtn : CardView
 
+    //database reference
     private lateinit var dbRef : DatabaseReference
+
+    private var isCustomer : Boolean = false
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_create_party, container, false)
 
-        etpartyname = view.findViewById(R.id.partynameinput)
-        etnumber = view.findViewById(R.id.partymobileinput)
         customerbtn = view.findViewById(R.id.customerbtn)
         supplierbtn = view.findViewById(R.id.supplierbtn)
-        etgst = view.findViewById(R.id.gstinput)
-        etpan = view.findViewById(R.id.paninput)
-        etaddress = view.findViewById(R.id.streetaddressinput)
-        stateinput = view.findViewById(R.id.statesection)
-        etpincode = view.findViewById(R.id.pincodeinput)
+
         savebtn = view.findViewById(R.id.savebtn)
 
-        dbRef = FirebaseDatabase.getInstance().getReference("party")
+
+        val partyNameInputLayout = view.findViewById<TextInputLayout>(R.id.partynameinput)
+        etpartyname = partyNameInputLayout.findViewById(R.id.partyinput)
+
+        val partyMobileInputLayout = view.findViewById<TextInputLayout>(R.id.partymobileinput)
+        etnumber = partyMobileInputLayout.findViewById(R.id.etnumber)
+
+        val gstInputLayout = view.findViewById<TextInputLayout>(R.id.gstinput)
+        etgst = gstInputLayout.findViewById(R.id.etgst)
+
+        val panInputLayout = view.findViewById<TextInputLayout>(R.id.paninput)
+        etpan = panInputLayout.findViewById(R.id.etpan)
+
+        val streetAddressInputLayout = view.findViewById<TextInputLayout>(R.id.streetaddressinput)
+        etaddress = streetAddressInputLayout.findViewById(R.id.etaddress)
+
+        val stateInputLayout = view.findViewById<TextInputLayout>(R.id.statesection)
+        stateinput = stateInputLayout.findViewById<AutoCompleteTextView>(R.id.stateinput)
+
+        val pincodeInputLayout = view.findViewById<TextInputLayout>(R.id.pincodeinput)
+        etpincode = pincodeInputLayout.findViewById(R.id.etpincode)
+
+
+        dbRef = FirebaseDatabase.getInstance().getReference("parties")
+        val connectedRef = FirebaseDatabase.getInstance().getReference("parties")
+
+
 
         savebtn.setOnClickListener{
             savepartydata()
         }
+
+        customerbtn.setOnClickListener {
+            isCustomer = true
+            changeButtonColor(customerbtn, R.drawable.button_pressed_color)
+        }
+        supplierbtn.setOnClickListener {
+            isCustomer = false
+        }
+
+
         val items = listOf("Andaman and Nicobar Islands",
-            "Andhra Pradesh",
-            "Arunachal Pradesh",
-            "Assam",
-            "Bihar",
-            "Chandigarh",
-            "Chhattisgarh",
-            "Dadra and Nagar Haveli and Daman and Diu",
-            "Delhi (National Capital Territory of Delhi)",
-            "Goa",
-            "Gujarat",
-            "Haryana",
-            "Himachal Pradesh",
-            "Jharkhand",
-            "Karnataka",
-            "Kerala",
-            "Ladakh",
-            "Lakshadweep",
-            "Madhya Pradesh",
-            "Maharashtra",
-            "Manipur",
-            "Meghalaya",
-            "Mizoram",
-            "Nagaland",
-            "Odisha",
-            "Puducherry",
-            "Punjab",
-            "Rajasthan",
-            "Sikkim",
-            "Tamil Nadu",
-            "Telangana",
-            "Tripura",
-            "Uttar Pradesh",
-            "Uttarakhand",
-            "West Bengal")
+            "Andhra Pradesh","Arunachal Pradesh","Assam",
+            "Bihar",            "Chandigarh",
+            "Chhattisgarh",            "Dadra and Nagar Haveli and Daman and Diu",
+            "Delhi (National Capital Territory of Delhi)",            "Goa",            "Gujarat",            "Haryana",            "Himachal Pradesh",            "Jharkhand",            "Karnataka",            "Kerala",            "Ladakh",            "Lakshadweep",            "Madhya Pradesh",
+            "Maharashtra",            "Manipur",            "Meghalaya",            "Mizoram",            "Nagaland",            "Odisha",            "Puducherry",           "Punjab",
+            "Rajasthan",            "Sikkim",            "Tamil Nadu",            "Telangana",
+            "Tripura",            "Uttar Pradesh",            "Uttarakhand",            "West Bengal")
 
         val autoComplete : AutoCompleteTextView = view.findViewById(R.id.stateinput)
 
@@ -96,14 +107,36 @@ class create_party : Fragment() {
     }
     private fun savepartydata(){
 
-        var partyname = etpartyname.text.toString()
-        var phonenumber = etnumber.text.toString()
-        var customerbtn = customerbtn.
+        val partyname = etpartyname.text.toString()
+        val phonenumber = etnumber.text.toString()
+        val gst = etgst.text.toString()
+        var pan = etpan.text.toString()
+        val address = etaddress.text.toString()
+        val state = stateinput.text.toString()
+        val pincode = etpincode.text.toString()
+
+        if (partyname.isEmpty() || phonenumber.isEmpty() || gst.isEmpty() ||  address.isEmpty() || state.isEmpty() || pincode.isEmpty()){
+            etpartyname.error = "Please Enter Party Name"
+            etnumber.error = "Please Enter Contect Number"
+            etgst.error = "Please Enter GST Number"
+            etaddress.error = "Please Enter Street Address"
+            stateinput.error = "Please Select State"
+            etpincode.error = "Please Enter Pincode"
+            return
+        }
+        val partyId = dbRef.push().key ?: ""
+
+
+        val party = partyModel(partyId, partyname, phonenumber, gst, pan, address, state, pincode)
+
+        dbRef.child(partyId).setValue(party)
+            .addOnCompleteListener{
+                Toast.makeText(requireContext(),"Party Created",Toast.LENGTH_SHORT).show()
+            }.addOnFailureListener{
+                Toast.makeText(requireContext(),"failed to Create Party",Toast.LENGTH_SHORT).show()
+            }
     }
-
-
-
-
-
+    private fun changeButtonColor(button: Button, drawableId: Int) {
+        button.setBackgroundResource(drawableId)
+    }
 }
-

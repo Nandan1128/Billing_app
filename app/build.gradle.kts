@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.billing_app"
     compileSdk = 34
-
+    
     defaultConfig {
         applicationId = "com.example.billing_app"
         minSdk = 24
@@ -18,6 +18,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {
