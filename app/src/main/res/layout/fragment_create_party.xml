@@ -148,9 +148,10 @@
                     android:layout_width="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginStart="5dp"
+                    android:clickable="true"
                     android:layout_height="wrap_content"
                     android:text="@string/customer"
-                    />
+                    android:focusable="true" />
 
                 <Button
                     style="?attr/materialButtonOutlinedStyle"
@@ -160,7 +161,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/supplier"
-                    />
+                    android:clickable="true"
+                    android:focusable="true" />
 
             </LinearLayout>
             <com.google.android.material.divider.MaterialDivider

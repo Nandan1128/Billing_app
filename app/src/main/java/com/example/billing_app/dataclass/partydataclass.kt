@@ -9,6 +9,4 @@ data class partydataclass(
     val streetaddress : String,
     val state : String,
     val pincode : Int,
-
-
 )

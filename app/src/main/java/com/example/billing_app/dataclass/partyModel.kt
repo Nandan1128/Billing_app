@@ -8,5 +8,6 @@ data class partyModel(
     var pan: String? = null,
     var address: String? = null,
     var state: String? = null,
-    var pincode: String? = null
+    var pincode: String? = null,
+    var partytype : String? = null
 )

@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.billing_app.R
 import com.example.billing_app.dataclass.partyModel
@@ -30,6 +31,7 @@ class create_party : Fragment() {
     private lateinit var etpincode : EditText
     private lateinit var savebtn : CardView
 
+    private var partytype = ""
     //database reference
     private lateinit var dbRef : DatabaseReference
 
@@ -75,11 +77,15 @@ class create_party : Fragment() {
         }
 
         customerbtn.setOnClickListener {
-            isCustomer = true
-            changeButtonColor(customerbtn, R.drawable.button_pressed_color)
+            customerbtn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.lightpink))
+            supplierbtn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
+              partytype = "Customer"
+
         }
         supplierbtn.setOnClickListener {
-            isCustomer = false
+            customerbtn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
+            supplierbtn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.lightpink))
+             partytype = "Supplier"
         }
 
 
@@ -87,7 +93,7 @@ class create_party : Fragment() {
             "Andhra Pradesh","Arunachal Pradesh","Assam",
             "Bihar",            "Chandigarh",
             "Chhattisgarh",            "Dadra and Nagar Haveli and Daman and Diu",
-            "Delhi (National Capital Territory of Delhi)",            "Goa",            "Gujarat",            "Haryana",            "Himachal Pradesh",            "Jharkhand",            "Karnataka",            "Kerala",            "Ladakh",            "Lakshadweep",            "Madhya Pradesh",
+            "Delhi (National Capital Territory of Delhi)",             "Goa",            "Gujarat",            "Haryana",            "Himachal Pradesh",            "Jharkhand",            "Karnataka",            "Kerala",            "Ladakh",            "Lakshadweep",            "Madhya Pradesh",
             "Maharashtra",            "Manipur",            "Meghalaya",            "Mizoram",            "Nagaland",            "Odisha",            "Puducherry",           "Punjab",
             "Rajasthan",            "Sikkim",            "Tamil Nadu",            "Telangana",
             "Tripura",            "Uttar Pradesh",            "Uttarakhand",            "West Bengal")
@@ -103,6 +109,7 @@ class create_party : Fragment() {
 
         }
 
+
         return view
     }
     private fun savepartydata(){
@@ -110,10 +117,12 @@ class create_party : Fragment() {
         val partyname = etpartyname.text.toString()
         val phonenumber = etnumber.text.toString()
         val gst = etgst.text.toString()
-        var pan = etpan.text.toString()
+        val pan = etpan.text.toString()
         val address = etaddress.text.toString()
         val state = stateinput.text.toString()
         val pincode = etpincode.text.toString()
+
+
 
         if (partyname.isEmpty() || phonenumber.isEmpty() || gst.isEmpty() ||  address.isEmpty() || state.isEmpty() || pincode.isEmpty()){
             etpartyname.error = "Please Enter Party Name"
@@ -127,7 +136,7 @@ class create_party : Fragment() {
         val partyId = dbRef.push().key ?: ""
 
 
-        val party = partyModel(partyId, partyname, phonenumber, gst, pan, address, state, pincode)
+        val party = partyModel(partyId, partyname, phonenumber, gst, pan, address, state, pincode,partytype )
 
         dbRef.child(partyId).setValue(party)
             .addOnCompleteListener{
@@ -136,7 +145,5 @@ class create_party : Fragment() {
                 Toast.makeText(requireContext(),"failed to Create Party",Toast.LENGTH_SHORT).show()
             }
     }
-    private fun changeButtonColor(button: Button, drawableId: Int) {
-        button.setBackgroundResource(drawableId)
-    }
+
 }
