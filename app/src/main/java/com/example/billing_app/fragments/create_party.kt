@@ -7,15 +7,16 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.cardview.widget.CardView
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.billing_app.R
 import com.example.billing_app.dataclass.partyModel
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 
 class create_party : Fragment() {
@@ -31,19 +32,17 @@ class create_party : Fragment() {
     private lateinit var etpincode : EditText
     private lateinit var savebtn : CardView
 
+    var Parties = "Parties"
     private var partytype = ""
     //database reference
-    private lateinit var dbRef : DatabaseReference
-
-    private var isCustomer : Boolean = false
+    private lateinit var partyRef : DatabaseReference
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_create_party, container, false)
-
         customerbtn = view.findViewById(R.id.customerbtn)
         supplierbtn = view.findViewById(R.id.supplierbtn)
 
-        savebtn = view.findViewById(R.id.savebtn)
 
+        savebtn = view.findViewById(R.id.savebtn)
 
         val partyNameInputLayout = view.findViewById<TextInputLayout>(R.id.partynameinput)
         etpartyname = partyNameInputLayout.findViewById(R.id.partyinput)
@@ -67,9 +66,7 @@ class create_party : Fragment() {
         etpincode = pincodeInputLayout.findViewById(R.id.etpincode)
 
 
-        dbRef = FirebaseDatabase.getInstance().getReference("parties")
-        val connectedRef = FirebaseDatabase.getInstance().getReference("parties")
-
+        partyRef = FirebaseDatabase.getInstance().getReference("Business")
 
 
         savebtn.setOnClickListener{
@@ -79,8 +76,7 @@ class create_party : Fragment() {
         customerbtn.setOnClickListener {
             customerbtn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.lightpink))
             supplierbtn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
-              partytype = "Customer"
-
+            partytype = "Customer"
         }
         supplierbtn.setOnClickListener {
             customerbtn.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.white))
@@ -88,7 +84,7 @@ class create_party : Fragment() {
              partytype = "Supplier"
         }
 
-
+        // statelist
         val items = listOf("Andaman and Nicobar Islands",
             "Andhra Pradesh","Arunachal Pradesh","Assam",
             "Bihar",            "Chandigarh",
@@ -97,18 +93,14 @@ class create_party : Fragment() {
             "Maharashtra",            "Manipur",            "Meghalaya",            "Mizoram",            "Nagaland",            "Odisha",            "Puducherry",           "Punjab",
             "Rajasthan",            "Sikkim",            "Tamil Nadu",            "Telangana",
             "Tripura",            "Uttar Pradesh",            "Uttarakhand",            "West Bengal")
-
         val autoComplete : AutoCompleteTextView = view.findViewById(R.id.stateinput)
-
         val adapter01 = ArrayAdapter(requireContext(),R.layout.list_item,items)
-
         autoComplete.setAdapter(adapter01)
-
         autoComplete.setOnItemClickListener { adaptorView, view, i, l ->
             val itemSelected = adaptorView.getItemAtPosition(i)
 
         }
-
+        // end of statelist
 
         return view
     }
@@ -124,6 +116,7 @@ class create_party : Fragment() {
 
 
 
+
         if (partyname.isEmpty() || phonenumber.isEmpty() || gst.isEmpty() ||  address.isEmpty() || state.isEmpty() || pincode.isEmpty()){
             etpartyname.error = "Please Enter Party Name"
             etnumber.error = "Please Enter Contect Number"
@@ -133,17 +126,32 @@ class create_party : Fragment() {
             etpincode.error = "Please Enter Pincode"
             return
         }
-        val partyId = dbRef.push().key ?: ""
-
+        val partyId = partyRef.push().key ?: "first"
 
         val party = partyModel(partyId, partyname, phonenumber, gst, pan, address, state, pincode,partytype )
+        if(partytype === "Customer"){
+            partyRef.child(Parties).child(partytype).child(partyId).setValue(party)
+                .addOnCompleteListener{
+                    Toast.makeText(requireContext(),"Party Created",Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener{
+                    Toast.makeText(requireContext(),"failed to Create Party",Toast.LENGTH_SHORT).show()
+                }
+        }
+        else{
+            partyRef.child(Parties).child(partytype).child(partyId).setValue(party)
+                .addOnCompleteListener{
+                    Toast.makeText(requireContext(),"Party Created",Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener{
+                    Toast.makeText(requireContext(),"failed to Create Party",Toast.LENGTH_SHORT).show()
+                }
+        }
 
-        dbRef.child(partyId).setValue(party)
-            .addOnCompleteListener{
-                Toast.makeText(requireContext(),"Party Created",Toast.LENGTH_SHORT).show()
-            }.addOnFailureListener{
-                Toast.makeText(requireContext(),"failed to Create Party",Toast.LENGTH_SHORT).show()
-            }
     }
+
+
+
+
+    // Define a function to fetch the business name from the database
+
 
 }

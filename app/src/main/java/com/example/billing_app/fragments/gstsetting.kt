@@ -4,14 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
 import android.widget.EditText
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.example.billing_app.R
+import com.example.billing_app.dataclass.BusinessModel
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 
 class gstsetting : Fragment() {
@@ -24,7 +25,7 @@ class gstsetting : Fragment() {
     private lateinit var etbusinesspincode: EditText
     private lateinit var etbusinessstateinput: EditText
     private lateinit var savebtn : CardView
-    private lateinit var dbRef : DatabaseReference
+    private lateinit var businessRef : DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater
@@ -57,6 +58,7 @@ class gstsetting : Fragment() {
         val businessPincodeInputLayout = view.findViewById<TextInputLayout>(R.id.businesspincodeinput)
         etbusinesspincode = businessPincodeInputLayout.findViewById(R.id.etbusinesspincode)
 
+        businessRef = FirebaseDatabase.getInstance().getReference("Business")
 
 
         savebtn.setOnClickListener {
@@ -72,8 +74,20 @@ class gstsetting : Fragment() {
        val Businessgst = etbusinessgst.text.toString()
        val Businesspan = etbusinesspan.text.toString()
        val Businessaddress = etbusinessaddress.text.toString()
+       val pincode = etbusinesspincode.text.toString()
        val Businessstate = etbusinessstateinput.text.toString()
-       val Businesspincode = etbusinesspincode.text.toString()
+
+
+       val BusinessId = businessRef.push().key ?: ""
+
+       val Businessmodal = BusinessModel(BusinessId,Businessname,Businessphone,Businessgst,Businesspan,Businessaddress,pincode,Businessstate)
+
+       businessRef.child(BusinessId).setValue(Businessmodal)
+           .addOnCompleteListener{
+               Toast.makeText(requireContext(),"Party Created", Toast.LENGTH_SHORT).show()
+           }.addOnFailureListener{
+               Toast.makeText(requireContext(),"failed to Create Party", Toast.LENGTH_SHORT).show()
+           }
    }
 
 }
